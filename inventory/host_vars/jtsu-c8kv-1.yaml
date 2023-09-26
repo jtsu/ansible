@@ -1,0 +1,10 @@
+---
+hostname: jtsu-c8kv-1
+interface_ip: 192.168.1.1
+
+as: 100
+router_id: 192.168.1.1
+
+networks:
+  - 192.168.1.0
+  - 192.168.10.0

@@ -1,0 +1,17 @@
+---
+- name: Verify Interfaces on Cisco IOS XE
+  hosts: routers
+  connection: network-cli
+  gather_facts: false
+
+  tasks:
+    - name: Display interfaces
+      ios_command:
+        commands:
+        - show version | include Version
+        - show ip interface brief
+      register: output
+
+    - name: print output
+      debug:
+        var: output.stdout_lines

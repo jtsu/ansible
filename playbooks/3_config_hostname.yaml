@@ -1,0 +1,12 @@
+---
+# Ansible Playbook to upgrade Cisco IOS
+
+- name: Upgrade CISCO IOS
+  hosts: routers
+
+  tasks:
+    - name: Configure Uplink
+      ios_config:
+        lines:
+          - hostname {{hostname}}
+          

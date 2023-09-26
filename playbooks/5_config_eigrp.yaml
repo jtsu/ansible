@@ -1,0 +1,12 @@
+---
+# Ansible Playbook to upgrade Cisco IOS
+
+- name: Configure EIGRP on routers
+  hosts: routers
+  connection: network_cli
+
+  tasks:
+    - name: EIGRP Config
+      ios_config:
+        src: "eigrp_template.j2"
+        match: none

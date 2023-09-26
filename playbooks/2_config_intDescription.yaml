@@ -1,0 +1,30 @@
+---
+- name: Verify Interfaces on Cisco IOS XE
+  hosts: routers
+  connection: network-cli
+  gather_facts: false
+
+  tasks:
+    - name: Interface Description
+      ios_config:
+        lines:
+        - description Interface to RTP Lab
+        parents: Interface GigabitEthernet1
+      notify: save config
+
+    - name: Display interfaces
+      ios_command:
+        commands:
+        - show run interface GigabitEthernet1
+      register: output
+
+
+    - name: print output
+      debug:
+        var: output.stdout_lines
+
+  handlers:
+  - name: save config
+    ios_command:
+      commands: wr
+      
