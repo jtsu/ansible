@@ -19,7 +19,7 @@
           - snmp-server user snmpv3 SNMPv3 v3 auth sha AuthPwd123 priv aes 128 PrivPwd123
 
 
-    - name: ACL - ACL-IN on GigE 2
+    - name: ACL - ACL-IN on uplink port
       ios_config:
         parents: ["ip access-list extended ACL-IN"]
         commands:
@@ -29,11 +29,11 @@
         match: exact
         replace: block
         before:
-          - interface GigabitEthernet 2
+          - interface GigabitEthernet {{ uplink_port }}
           - no ip access-group ACL-IN in
           - no ip access-list extended ACL-IN
         after:
-          - interface GigabitEthernet 2
+          - interface GigabitEthernet {{ uplink_port }}
           - ip access-group ACL-IN in
 
 
@@ -43,4 +43,3 @@
         lines:
           - description Ansible Test Interface
           - ip address {{ uplink_ip }} {{ uplink_mask }}
-          
