@@ -1,7 +1,7 @@
 ---
-# Ansible Playbook to upgrade Cisco IOS
+# Ansible Playbook to change hostname
 
-- name: Upgrade CISCO IOS
+- name: change hostname
   hosts: routers
 
   tasks:
