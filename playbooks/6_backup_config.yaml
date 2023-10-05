@@ -32,8 +32,7 @@
    - name: Save output
      copy:
        content: "{{config.stdout[0]}}"
-       dest: "~/ansible/playbooks/backups/{{hostvars.localhost.DTG}}/{{ inventory_hostname }}-{{hostvars.loca
-lhost.DTG}}-config.txt"
+       dest: "~/ansible/playbooks/backups/{{hostvars.localhost.DTG}}/{{ inventory_hostname }}-{{hostvars.localhost.DTG}}-config.txt"
 
 
 ## SAVE the Running Config
