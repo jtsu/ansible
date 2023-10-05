@@ -39,4 +39,3 @@
    - name: Save running config
      ios_config:
        save_when: always
-
