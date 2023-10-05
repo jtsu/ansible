@@ -1,5 +1,5 @@
 ---
-- name: Verify Interfaces on Cisco IOS XE
+- name: show ver and interface
   hosts: routers
   connection: network-cli
   gather_facts: false
