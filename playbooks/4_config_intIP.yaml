@@ -1,15 +1,14 @@
 ---
-# Ansible Playbook to upgrade Cisco IOS
+# Ansible Playbook to config interface ip
 
-- name: Upgrade CISCO IOS
+- name: config interface ip
   hosts: routers
   connection: network_cli
 
   tasks:
-    - name: Configure Uplink
+    - name: Configure Uplink port
       ios_config:
-        parents: "Interface GigabitEthernet 2"
+        parents: "Interface GigabitEthernet {{ uplink_port }}"
         lines:
           - description Ansible Test Interface
-          - ip address {{ interface_ip }} 255.255.255.0
-          
+          - ip address {{ uplink_ip }} {{ uplink_mask }}
