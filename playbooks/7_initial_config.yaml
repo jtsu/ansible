@@ -1,11 +1,8 @@
 ---
-# Ansible Playbook to config Cisco IOS
+# Ansible Playbook to config ios-xe routers
 
-- name: Config CISCO IOS
+- name: Config ios-xe routers
   hosts: routers
-
-  vars:
-    upgrade_ios_version: 12.2(55)SE12
 
   tasks:
     - name: Configure service
@@ -19,16 +16,16 @@
         lines:
           - snmp-server group SNMPv3 v3 priv
         after:
-          - snmp-server user snmpv3 SNMPv3 v3 auth sha AUTHPW123 priv aes 128 Pr1vPW123
+          - snmp-server user snmpv3 SNMPv3 v3 auth sha AuthPwd123 priv aes 128 PrivPwd123
 
 
     - name: ACL - ACL-IN on GigE 2
       ios_config:
         parents: ["ip access-list extended ACL-IN"]
         commands:
-         - permit tcp any any eq 22
-         - permit tcp any any eq www
-         - permit udp any any eq snmp
+         - 10 permit tcp any any eq 22
+         - 20 permit tcp any any eq www
+         - 30 permit udp any any eq snmp
         match: exact
         replace: block
         before:
@@ -42,7 +39,8 @@
 
     - name: Configure Uplink GigE 2
       ios_config:
-        parents: "Interface GigabitEthernet 2"
+        parents: "Interface GigabitEthernet2"
         lines:
           - description Ansible Test Interface
           - ip address {{ interface_ip }} 255.255.255.0
+          
