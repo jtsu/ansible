@@ -2,7 +2,10 @@
 hostname: jtsu-c8kv-2
 
 #uplink
-interface_ip: 192.168.1.2
+uplink_port: 2
+uplink_ip: 192.168.1.2
+uplink_mask: 255.255.255.0
+
 
 #eigrp
 as: 100
@@ -10,4 +13,4 @@ router_id: 192.168.1.2
 networks:
   - 192.168.1.0
   - 192.168.20.0
-  
+
