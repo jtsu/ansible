@@ -1,11 +1,11 @@
 ---
-- name: Verify Interfaces on Cisco IOS XE
+- name: change config
   hosts: routers
   connection: network-cli
   gather_facts: false
 
   tasks:
-    - name: Interface Description
+    - name: Change Interface Description
       ios_config:
         lines:
         - description Interface to RTP Lab
