@@ -1,5 +1,5 @@
 ---
-# Ansible Playbook to upgrade Cisco IOS
+# Ansible Playbook to config eigrp
 
 - name: Configure EIGRP on routers
   hosts: routers
