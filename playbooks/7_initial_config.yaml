@@ -37,10 +37,10 @@
           - ip access-group ACL-IN in
 
 
-    - name: Configure Uplink GigE 2
+    - name: Configure Uplink port
       ios_config:
-        parents: "Interface GigabitEthernet2"
+        parents: "Interface GigabitEthernet {{ uplink_port }}"
         lines:
           - description Ansible Test Interface
-          - ip address {{ interface_ip }} 255.255.255.0
+          - ip address {{ uplink_ip }} {{ uplink_mask }}
           
